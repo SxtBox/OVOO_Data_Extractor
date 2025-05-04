@@ -19,9 +19,9 @@ Usage:
 Save the script as scrape_live_tv.php.
 Place the script on a PHP-enabled server.
 Access it via a web browser or tool, e.g.:
-http://yourserver/scrape_live_tv.php?format=json
-http://yourserver/scrape_live_tv.php?format=raw
-http://yourserver/scrape_live_tv.php?format=m3u
+http://yourserver/Live_TV_Extractor.php?format=json
+http://yourserver/Live_TV_Extractor.php?format=raw
+http://yourserver/Live_TV_Extractor.php?format=m3u
 
 Live_TV_Extractor.php?url=https://ovoo.spagreen.net/demo/v33/live-tv/category/english.html&format=m3u
 */
@@ -62,13 +62,13 @@ function extract_html_data($html) {
 function output_data($data, $format) {
     if ($format === 'json') {
         header('Content-Type: application/json');
-		$json_data = str_replace('\\/', '/', json_encode($data,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-		echo $json_data;
+	$json_data = str_replace('\\/', '/', json_encode($data,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	echo $json_data;
     } elseif ($format === 'raw') {
         header('Content-Type: text/plain');
-		$strm_ids = 1;
+	$strm_ids = 1;
         foreach ($data as $item) {
-			echo "ID: " . $strm_ids++ . "\n";
+	    echo "ID: " . $strm_ids++ . "\n";
             echo "Title: {$item['title']}\n";
             echo "Link: {$item['link']}\n";
             echo "Thumbnail: {$item['thumbnail']}\n\n";
@@ -93,3 +93,4 @@ $data = extract_html_data($html);
 // Specify the output format: "json", "raw", or "m3u"
 $outputFormat = isset($_GET["format"]) ? strtolower($_GET["format"]) : "json";
 output_data($data, $outputFormat);
+?>
