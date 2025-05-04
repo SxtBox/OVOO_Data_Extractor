@@ -33,8 +33,8 @@ function extractData($html) {
 	$strm_ids = 1;
     foreach ($matches as $match) {
         $data[] = [
-		"id" =>   $strm_ids++,
-		"title" => trim($match[4]), // Movie title text
+	"id" =>   $strm_ids++,
+	"title" => trim($match[4]), // Movie title text
         "iframe_url" => trim($match[1]), // iframe src value
         "thumbnail_url" => trim($match[2]), // Background image URL
         "watch_url" => trim($match[3]), // <a> href value (movie-img link)
