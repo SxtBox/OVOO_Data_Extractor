@@ -45,7 +45,7 @@ function extractData($html) {
     $data = [];
     foreach ($matches as $match) {
         $data[] = [
-		'title' => $match[4],
+	'title' => $match[4],
         'link' => $match[1],
         'thumbnail' => $match[2],
         'iframe_src' => $match[1],
@@ -61,7 +61,7 @@ function outputData($data, $format) {
         header('Content-Type: application/json');
         //echo json_encode($data, JSON_PRETTY_PRINT);
 	    $json_data = str_replace('\\/', '/', json_encode($data,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-        echo $json_data;
+           echo $json_data;
     } elseif ($format === 'raw') {
         header('Content-Type: text/plain');
         foreach ($data as $item) {
