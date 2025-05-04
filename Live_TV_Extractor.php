@@ -49,8 +49,8 @@ function extract_html_data($html) {
 	$strm_ids = 1;
     foreach ($matches as $match) {
         $data[] = [
-		"id" =>   $strm_ids++,
-		"title" => trim($match[3]),
+	"id" =>   $strm_ids++,
+	"title" => trim($match[3]),
         "link" => trim($match[1]),
         "thumbnail" => trim($match[2]),
         ];
