@@ -40,13 +40,10 @@ function get_data($url) {
 
 // Function to extract data using regex
 function extract_html_data($html) {
-    // $pattern = '/<a[^>]*href=["\'](.*?)["\'][^>]*>\s*<img[^>]*src=["\'](.*?)["\'][^>]*alt=["\'](.*?)["\']/i';
-	// https://rubular.com/r/bwOxmuYEXkO5GO
-	//$pattern = '/figure[\w\W]*?<a[^>]*href=["\'](.*?)["\'][^>]*>\s*<img[^>]*src=["\'](.*?)["\'][^>]*alt=["\'](.*?)["\']/i';
-	$pattern = '/<figure[\w\W]*?<a[^>]*href=["\'](.*?)["\'][^>]*>\s*<img[^>]*src=["\'](.*?)["\'][^>]*alt=["\'](.*?)["\']/i';
+    $pattern = '/<figure[\w\W]*?<a[^>]*href=["\'](.*?)["\'][^>]*>\s*<img[^>]*src=["\'](.*?)["\'][^>]*alt=["\'](.*?)["\']/i';
     preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
     $data = [];
-	$strm_ids = 1;
+    $strm_ids = 1;
     foreach ($matches as $match) {
         $data[] = [
 	"id" =>   $strm_ids++,
